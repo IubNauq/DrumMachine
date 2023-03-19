@@ -1,38 +1,106 @@
-.App {
-  text-align: center;
+*,*:before,*:after{
+    box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: gray;
+    font-family: Russo One,sans-serif;
+    font-weight: bold;
+    user-select: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#drum-machine{
+    width: 40rem;
+    height: 20rem;
+    border: 5px solid orange;
+    background-color: darkgray;
+    display: flex;
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.pad-bank{
+    display: inline-flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    width: 60%;
+    height: 100%;
 }
 
-.App-link {
-  color: #61dafb;
+.controls-container{
+    display: inline-flex;
+    width: 40%;
+    height: 100%;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.drum-pad{
+    width: 6rem;
+    height: 4rem;
+    display: inline-block;
+    background-color: gray;
+    margin: 0.5rem;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 1rem;
+    box-shadow: black 3px 3px 5px;
+}
+
+.drum-pad:hover{
+    opacity: 0.8;
+}
+
+.drum-pad:active{
+    opacity: 0.5;
+}
+
+#display{
+    background-color: gray;
+    width: 13rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bolder;
+    margin-top: 2rem;
+}
+
+.power{
+    font-weight: bolder;
+    background-color: gray;
+}
+
+.power:hover{
+    opacity: 0.8;
+}
+
+.power:active{
+    opacity: 0.5;
+}
+
+.volume-slider{
+    margin-top: 1rem;
+}
+
+#change-sounds{
+    background-color: gray;
+    font-weight: bolder;
+    margin-top: 2rem;
+}
+
+#change-sounds:hover{
+    opacity: 0.8;
+}
+
+#change-sounds:active{
+    opacity: 0.5;
 }
