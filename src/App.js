@@ -156,6 +156,7 @@ function App() {
 
     function play(props) {
         const audio = document.getElementById(props.key)
+        audio.currentTime = 0
         audio.play()
         setCurSound(props.id)
     }
