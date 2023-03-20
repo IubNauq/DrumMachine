@@ -138,8 +138,12 @@ function KeyboardKey(props) {
 }
 
 function Keyboard(props) {
+    if (props.power === 'ON')
+        return props.sounds.map(sound => <KeyboardKey play={props.play}
+                                                      sound={sound}/>)
+
     return props.sounds.map(sound => <KeyboardKey play={props.play}
-                                                  sound={sound}/>)
+                                                  sound={{...sound, url: '#'}}/>)
 }
 
 
@@ -147,7 +151,7 @@ function App() {
 
     const [sounds, setSounds] = useState(firstSoundsGroup)
     const [CurSound, setCurSound] = useState('')
-    const [volume, setVolume] = useState(100)
+    const [volume, setVolume] = useState(1)
     const [power, setPower] = useState('ON')
 
     function play(props) {
@@ -172,12 +176,23 @@ function App() {
     }
 
 
+    function handleVolume(e) {
+        setVolume(e.target.value)
+        setCurSound("Volume: " + Math.round(volume * 100))
+
+        const audios = sounds.map(s => document.getElementById(s.key))
+        audios.forEach(function (a) {
+            a.volume = volume
+        })
+    }
+
     return (
         <div className="App"
              id="drum-machine">
             <div className="pad-bank">
                 <Keyboard play={play}
-                          sounds={sounds}/>
+                          sounds={sounds}
+                          power={power}/>
             </div>
             <div className="controls-container">
                 <button className="power"
@@ -189,7 +204,9 @@ function App() {
                     <input max="1"
                            min="0"
                            step="0.01"
-                           type="range"/>
+                           type="range"
+                           value={volume}
+                           onChange={handleVolume}/>
                 </div>
                 <button id="change-sounds"
                         onClick={changeSounds}>
